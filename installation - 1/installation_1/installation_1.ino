@@ -1,6 +1,7 @@
 #include <SPI.h>
 #include <TFT_eSPI.h>    // Hardware-specific library
 #include <cstdio>
+#include<cstdlib>
 #include <iostream>
 #include "words_w_count.h"
 TFT_eSPI tft = TFT_eSPI();
@@ -32,9 +33,6 @@ void setup()
 void loop(void)
 {
   const GFXfont *fontList[] = {
-    &FreeSerif8pt7b,
-    &FreeSerif9pt7b,
-    &FreeSerif10pt7b,
     &FreeSerif11pt7b,
     &FreeSerif12pt7b,
     &FreeSerif13pt7b,
@@ -52,7 +50,12 @@ void loop(void)
     &FreeSerif25pt7b,
     &FreeSerif26pt7b,
     &FreeSerif27pt7b,
+    &FreeSerif28pt7b,
+    &FreeSerif29pt7b,
+    &FreeSerif30pt7b,
   };
+  srand((unsigned) time(NULL));
+
   tft.invertDisplay(true);
   tft.fillScreen(TFT_BLACK);
   tft.setTextColor(TFT_CYAN);
@@ -60,12 +63,10 @@ void loop(void)
   tft.setCursor(0, 50);
   tft.setTextWrap(true); // Wrap on width
 
-  for (int i = 0; i<500; i++){
-    // char msg [100]; 
-    // sprintf(msg, wordsList[i]);
-    
-    const GFXfont *f = fontList[wordsFreq[i]];
-    showmsgXY(f, wordsList[i]);
+  for (int i = 0; i<800; i++){
+    int random = rand()%500;    
+    const GFXfont *f = fontList[wordsFreq[random]];
+    showmsgXY(f, wordsList[random]);
   }
 
   

@@ -87,7 +87,10 @@ typedef struct { // Data stored for FONT AS A WHOLE:
   #include <Fonts/GFXFF/FreeSerif23pt7b.h>  
   #include <Fonts/GFXFF/FreeSerif25pt7b.h> 
   #include <Fonts/GFXFF/FreeSerif26pt7b.h> 
-  #include <Fonts/GFXFF/FreeSerif27pt7b.h> 
+  #include <Fonts/GFXFF/FreeSerif27pt7b.h>  
+  #include <Fonts/GFXFF/FreeSerif28pt7b.h> 
+  #include <Fonts/GFXFF/FreeSerif29pt7b.h> 
+  #include <Fonts/GFXFF/FreeSerif30pt7b.h>  
 
   // Serif fonts
   #include <Fonts/GFXFF/FreeSerif9pt7b.h>  // FF33 or FS9
