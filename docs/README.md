@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # Creative Embedded Projects
 
 [Project 1: Words and More Words](../installation_1/)
