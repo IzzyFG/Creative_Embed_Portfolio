@@ -1,7 +1,7 @@
 ---
 title: homepage
 layout: default
-filename: index.md
+filename: project_2.md
 --- 
 
 # Serial Project: Quiz Game
