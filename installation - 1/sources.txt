@@ -1,5 +1,0 @@
-links to code used:
-https://github.com/adafruit/Adafruit-GFX-Library/blob/master/fontconvert/makefonts.sh
-https://electropeak.com/learn/absolute-beginners-guide-to-tft-lcd-displays-by-arduino/
-
-https://stackoverflow.com/questions/8684327/c-map-number-ranges
