@@ -1,3 +1,9 @@
+---
+title: homepage
+layout: default
+filename: index.md
+--- 
+
 # Serial Project: Quiz Game
 
 ## Technical Documentation
