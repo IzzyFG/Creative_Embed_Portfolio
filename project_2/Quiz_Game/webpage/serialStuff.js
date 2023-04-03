@@ -37,50 +37,47 @@ async function readLoop() {
   }
 };
 
+/*score variables*/
+int score[] = {0};
+int oldScore[] = {score[0]};
 
-/*
+var inputButton = false;
 
-you also need this code on the ESP32. 
-change the code for whichever pin your button is on
-note that some pins don't work when connected to web serial
-
------
-
-#define BUTTON 35
-
-void setup() {
-  Serial.begin(115200);
-  pinMode(BUTTON, INPUT);
+/*TODO: add timer?*/
+/*flashes score on led*/
+/* change to show score on screen?*/
+async function showScore(){
+	delay(2000);
+	for (int i =0; i<score[0]; i++){
+		digitalWrite(leds[0], HIGH);
+		delay(500);
+		digitalWrite(leds[0], LOW);
+		delay(500);
+	}
 }
-
-void loop() {
-  Serial.print(digitalRead(BUTTON));
-  delay(100);
-}
-
-*/
 
 /*UPDATE answers
  * questions array
  */
-function updateChoices(questions){
+async function updateChoices(questions){
   document.getElementById("btn1").textContent="newtext";
   document.getElementById("btn2").textContent="newtext";
   document.getElementById("btn3").textContent="newtext";
   document.getElementById("btn4").textContent="newtext";
 }
 
-var inputButton = false;
 
 /*int x, int y */
-function selectBox(xVal, yVal){
+async function selectBox(xVal, yVal){
   /* unselect all */
   let unsel = "btn-outline-secondary";
   let sel = "btn btn-primary btn-lg";
+
   document.getElementById("btn1").className = unsel;
   document.getElementById("btn2").className = unsel;
   document.getElementById("btn3").className = unsel;
   document.getElementById("btn4").className = unsel;
+
 	/*top*/ 
 	if(xVal <=511 && xVal > 0){
 		/*left*/
@@ -89,19 +86,18 @@ function selectBox(xVal, yVal){
 		}
 		/*right*/
 		if(yVal <=511 && yVal > 0){
-			//box2
+      document.getElementById("btn2").className = sel;
 		}
 	}
 	/*bottom */
 	if(xVal <=1023 && xVal > 511){
 		/*left*/
 		if(yVal <=511 && yVal > 0){
-			//box3
+      document.getElementById("btn3").className = sel;
 		}
 		/*right*/
 		if(yVal <=511 && yVal > 0){
-			//box4 
-			
+      document.getElementById("btn4").className = sel;
 		}
 	}
 }
@@ -109,3 +105,24 @@ function selectBox(xVal, yVal){
 function checkAnswer(){
 
 }
+
+/* when button is pressed select item */
+void pressedBtn(int b){
+	/**/
+	while(digitalRead(btnPin) !=1){
+		Serial.println(digitalRead(btnPin));
+		delay(500);
+		/*print to screen selection*/
+	}
+	btnPressed = -1;
+}
+
+bool compArr(int *arr1, int *arr2, int l){
+	for (int j = 0; j<1; j++){
+		if (arr1[j]!=arr2[j]){
+			return false;
+		}
+	}
+	return true;
+}
+
