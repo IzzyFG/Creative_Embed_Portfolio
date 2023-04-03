@@ -19,7 +19,7 @@ filename: project_2.md
 5. Wire cutters/strippers
 6. Breadboard
 
-#### Wire Project 
+#### Wire Project
 
 1. Connect wire from TTGO T1 pin 5V to joystick pin  +5V
 2. Connect wire from TTGO T1 pin G to joystick pin  G
@@ -66,14 +66,23 @@ filename: project_2.md
 ## Creative Documentation
 
 First I prototyped the design. I wanted a simple enclosure that would have a button and joystick stick out from one side and allow for usb C access on side.
-    ![Design Draw](src\PXL_20230403_032123117.jpg)
-    ![Prototyping Design](src\PXL_20230402_172559122.jpg)
+
+
+<img src = "src\PXL_20230403_032123117.jpg" alt="Design Draw" width = "65%" height = "65%">
+
+<img src = "src\PXL_20230402_172559122.jpg" alt="Prototyping Design" width = "65%" height = "65%">
+
 
 Then I cut everything to size and taped the sides for a nicer finish:
-    ![Design Cut](src\PXL_20230402_175251574.jpg)
-    ![Design with board](src\PXL_20230402_184541882.jpg)
-    ![taped1](src\PXL_20230402_185430024.jpg)
-    ![taped2](src\PXL_20230402_185434966.jpg)
+   
+<img src = "src\PXL_20230402_175251574.jpg" alt="Design Cut" width = "65%" height = "65%">
+
+<img src = "src\PXL_20230402_184541882.jpg" alt="Design with board" width = "65%" height = "65%">
+
+
+<img src = "src\PXL_20230402_185430024.jpg" alt="taped1" width = "65%" height = "65%">
+
+<img src = "src\PXL_20230402_185434966.jpg" alt="taped2" width = "65%" height = "65%">
 
 Taping the project closed also allows for it to be a bit of a mystery, which is how it is intended to seem. Since the whole project is designed around quizzes I wanted the user to feel uncertain about what truly lies ahead.
 
