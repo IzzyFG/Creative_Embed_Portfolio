@@ -1,7 +1,31 @@
-# Technical documentation:
+# Technical documentation
 
-1. Install VS code
-2. Install PlatformIO from marketplace
-3. Create New Project with PlatformIO PIO Home
-3a. Select Board TTGO T1 
-3b. Match monitor_speed in platformio.ini to serial monitor speed of VSCode
+## Requirements
+
+1. VS code
+2. VS code extension PlatformIO
+
+## To run project
+
+1. Clone the repository
+
+    ```console
+    git clone git@github.com:IzzyFG/Creative_Embed_Portfolio.git
+    ```
+
+2. Open Quiz_Game in VScode
+    1. Open VScode
+    2. Open PlatformIO
+    3. Select 'Pick a folder'
+    4. Select 'Creative_Embed_Portfolio/project_2/Quiz_Game'
+
+3. Upload code to TTGO T1
+    1. Connect TTGO T1 to computer
+    2. Ensure no wires are connected to outputs
+    3. Open command pallete "ctrl + p"
+    4. Type "Platform IO: upload" and select item
+
+4. Open website locally on computer
+    1. Launch a chromiun browser
+    2. Get full path of "/Embedded%20Design/Creative_Embed_Portfolio/project_2/Quiz_Game/webpage/index.html"
+    3. Type full path in browser address bar
