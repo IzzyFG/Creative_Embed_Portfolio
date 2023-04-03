@@ -1,19 +1,30 @@
 //when the user clicks anywhere on the page
-document.addEventListener('click', async () => {
-  // Prompt user to select any serial port.
-  var port = await navigator.serial.requestPort();
-  // be sure to set the baudRate to match the ESP32 code
-  await port.open({ baudRate: 115200 });
+// document.addEventListener('click', async () => {
+//   // Prompt user to select any serial port.
+//   var port = await navigator.serial.requestPort();
+//   // be sure to set the baudRate to match the ESP32 code
+//   await port.open({ baudRate: 115200 });
 
-  let decoder = new TextDecoderStream();
-  inputDone = port.readable.pipeTo(decoder.writable);
-  inputStream = decoder.readable;
+//   let decoder = new TextDecoderStream();
+//   inputDone = port.readable.pipeTo(decoder.writable);
+//   inputStream = decoder.readable;
 
-  reader = inputStream.getReader();
-  readLoop();
+//   reader = inputStream.getReader();
+//   readLoop();
 
-});
+// });
 
+
+var inputButton = false;
+var pins = [0,0,0]
+
+/*score variables*/
+var score = 0;
+
+var qCount = 0; 
+let questions = ["q1", "ans1", "ans2", "ans3", "ans4"];
+var currSelect = 0; 
+var correct = 1; 
 
 async function readLoop() {
   counterVal = 0;
@@ -28,42 +39,56 @@ async function readLoop() {
     if (value) {
       parsedVal = parseInt(value);
       if (!isNaN(parsedVal)) {
-        counterVal += parseInt(value)/100.0;
-        redVal = (1+Math.sin(counterVal)) * (255/2);
-        document.body.style.backgroundColor = 'rgb(' + redVal + ',  60, 50)';
+        pins[counterVal] = parsedVal;
+        counterVal += 1;
+        if(counterVal == 3 && pins[2] == 1){
+          inputButton = true;
+        }
+        else{
+          inputButton = false;
+        }
       }
-
+      selectBox(pins[0], pins[1]);
     }
   }
 };
 
-/*score variables*/
-int score[] = {0};
-int oldScore[] = {score[0]};
+var timeLeft = 30;
 
-var inputButton = false;
+var timerID = document.getElementById("time");
+timerID = setInterval(countdown, 1000);
 
-/*TODO: add timer?*/
-/*flashes score on led*/
-/* change to show score on screen?*/
-async function showScore(){
-	delay(2000);
-	for (int i =0; i<score[0]; i++){
-		digitalWrite(leds[0], HIGH);
-		delay(500);
-		digitalWrite(leds[0], LOW);
-		delay(500);
-	}
+/* show score on screen and timer*/
+function countdown(){
+  if (timeLeft == -1) {
+    clearTimeout(timerId);
+    // doSomething();
+  } else {
+    document.getElementById("time").innerText = "Time Left: "+ timeLeft;
+    document.getElementById("score").innerText = "Score is " + score;
+    timeLeft--;
+  }
 }
+
+
+document.getElementById("question").innerText="question";
+document.getElementById("btn1").innerText="btn1";
+document.getElementById("btn2").innerText="btn2";
+document.getElementById("btn3").innerText="btn3";
+document.getElementById("btn4").innerText="btn4";
+jQuery(function($){
+
+})
 
 /*UPDATE answers
  * questions array
  */
-async function updateChoices(questions){
-  document.getElementById("btn1").textContent="newtext";
-  document.getElementById("btn2").textContent="newtext";
-  document.getElementById("btn3").textContent="newtext";
-  document.getElementById("btn4").textContent="newtext";
+function updateQuestion(){
+  document.getElementById("question").innerText=questions[0];
+  document.getElementById("btn1").innerText=questions[1];
+  document.getElementById("btn2").innerText=questions[2];
+  document.getElementById("btn3").innerText=questions[3];
+  document.getElementById("btn4").innerText=questions[4];
 }
 
 
@@ -73,20 +98,23 @@ async function selectBox(xVal, yVal){
   let unsel = "btn-outline-secondary";
   let sel = "btn btn-primary btn-lg";
 
-  document.getElementById("btn1").className = unsel;
-  document.getElementById("btn2").className = unsel;
-  document.getElementById("btn3").className = unsel;
-  document.getElementById("btn4").className = unsel;
+    
+  document.getElementById("btn1").toggleClass(unsel);
+  document.getElementById("btn2").toggleClass(unsel);
+  document.getElementById("btn3").toggleClass(unsel);
+  document.getElementById("btn4").toggleClass(unsel);
 
 	/*top*/ 
 	if(xVal <=511 && xVal > 0){
 		/*left*/
 		if(yVal <=511 && yVal > 0){
       document.getElementById("btn1").className = sel;
+      currSelect = 1; 
 		}
 		/*right*/
 		if(yVal <=511 && yVal > 0){
       document.getElementById("btn2").className = sel;
+      currSelect = 2; 
 		}
 	}
 	/*bottom */
@@ -94,35 +122,27 @@ async function selectBox(xVal, yVal){
 		/*left*/
 		if(yVal <=511 && yVal > 0){
       document.getElementById("btn3").className = sel;
+      currSelect = 3; 
 		}
 		/*right*/
 		if(yVal <=511 && yVal > 0){
       document.getElementById("btn4").className = sel;
+      currSelect = 4; 
 		}
 	}
 }
 
 function checkAnswer(){
-
+  if(inputButton || timeLeft == 0){
+    if (currSelect == correct){
+      score++;
+    }
+    currSelect = 0; 
+    correct = 1; /*value of new correct*/
+  }
+  qCount++;
+  updateQuestion();
 }
 
-/* when button is pressed select item */
-void pressedBtn(int b){
-	/**/
-	while(digitalRead(btnPin) !=1){
-		Serial.println(digitalRead(btnPin));
-		delay(500);
-		/*print to screen selection*/
-	}
-	btnPressed = -1;
-}
-
-bool compArr(int *arr1, int *arr2, int l){
-	for (int j = 0; j<1; j++){
-		if (arr1[j]!=arr2[j]){
-			return false;
-		}
-	}
-	return true;
-}
+// updateQuestion();
 
