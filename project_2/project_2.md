@@ -65,6 +65,14 @@ filename: project_2.md
 
 ## Creative Documentation
 
-## Project website
+First I prototyped the design. I wanted a simple enclosure that would have a button and joystick stick out from one side and allow for usb C access on side.
+    ![Design Draw](src\PXL_20230403_032123117.jpg)
+    ![Prototyping Design](src\PXL_20230402_172559122.jpg)
 
-View visuals for Quiz_Game[Quiz_Game](./Quiz_Game/)
+Then I cut everything to size and taped the sides for a nicer finish:
+    ![Design Cut](src\PXL_20230402_175251574.jpg)
+    ![Design with board](src\PXL_20230402_184541882.jpg)
+    ![taped1](src\PXL_20230402_185430024.jpg)
+    ![taped2](src\PXL_20230402_185434966.jpg)
+
+Taping the project closed also allows for it to be a bit of a mystery, which is how it is intended to seem. Since the whole project is designed around quizzes I wanted the user to feel uncertain about what truly lies ahead. 
