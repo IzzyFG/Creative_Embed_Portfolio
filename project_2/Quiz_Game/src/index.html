@@ -1,0 +1,102 @@
+<!-- https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_webpage&stacked=h-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Quiz Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+  <title id = title >
+    Quizzes
+  </title>
+
+</head>
+
+<body>
+  <div class = "container-xxl my-md-4 bd-layout">
+
+    <div class = "bd-main order 1">
+
+    </div>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm-8" > 
+          <h3 id = time> 
+            Time Left = 
+          </h3>
+        </div>
+
+        <div class="col-sm-4">
+          <h3 id = score > 
+            Score 
+          </h3>
+        </div>
+      </div>
+  
+      <div class="row justify-content-center" style = "padding-bottom: 50px" >
+        <div class="col" id = question > 
+          <h1 id = "content" class='text-center'> 
+            Question: 
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div class = "container">
+
+      <div class = "row">
+        <div class = "col text-center">
+          <div class="d-grid gap-2 col-2">
+            <button type="button" id = "btn1" class="btn btn-primary btn-lg">
+              Answer 1
+            </button>
+      
+            <button type="button"  id = "btn2" class="btn btn-outline-secondary btn-lg">
+              Answer 2
+            </button>
+            
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-center" > 
+          <div class="d-grid gap-2 col-6"></div>
+    
+            <button type="button"  id = "btn3" class="btn btn-outline-secondary btn-lg">
+              Answer 3
+            </button>
+      
+            <button type="button"  id = "btn4" class="btn btn-outline-secondary btn-lg">
+              Answer 4
+            </button>
+    
+          </div>
+        </div>
+      </div>
+  
+  </div>
+  
+</body>

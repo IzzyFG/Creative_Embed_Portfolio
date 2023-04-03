@@ -52,9 +52,6 @@ void pressedBtn(int b){
 		/*print to screen selection*/
 	}
 	btnPressed = -1;
-	if(!compArr(score, oldScore, 2)){
-		showScore();
-	}
 }
 
 bool compArr(int *arr1, int *arr2, int l){
@@ -66,35 +63,6 @@ bool compArr(int *arr1, int *arr2, int l){
 	return true;
 }
 
-void selectBox(int xVal, int yVal){
-	/*left*/ 
-	if(yVal <=511 && yVal > 0){
-		/*top*/
-		if(xVal <=511 && xVal > 0){
-			//box1
-		}
-		/*bottom*/
-		if(yVal <=511 && yVal > 0){
-			//box2
-		}
-	}
-	/*right */
-	if(yVal <=1023 && yVal > 511){
-		/*top*/
-		if(xVal <=511 && xVal > 0){
-			//box3
-		}
-		/*bottom*/
-		if(yVal <=511 && yVal > 0){
-			//box4 
-			
-		}
-	}
-}
-
-void checkAnswer(){
-
-}
 
 
 /* put your main code here, to run repeatedly */
@@ -105,13 +73,14 @@ void loop() {
 	// int zVal = digitalRead(joyPins[2]);
 	int m = analogRead(btnPin);
 
+	Serial.print(xVal, yVal, m);
 	/*highlight current selction*/
-	selectBox(xVal, yVal);
+	// selectBox(xVal, yVal);
 
-	if(res[0]-1 < m ) {
-		btnPressed == 0;
-		checkAnswer();
-	}
+	// if(res[0]-1 < m ) {
+	// 	btnPressed == 0;
+	// 	checkAnswer();
+	// }
 
 
 
