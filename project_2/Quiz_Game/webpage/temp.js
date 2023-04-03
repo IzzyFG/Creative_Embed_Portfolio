@@ -49,6 +49,7 @@ async function readLoop() {
       break;
     }
     console.log(value);
+    
     if (value) {
       parsedVal = parseInt(value);
       if (!isNaN(parsedVal) && parsedVal == 1) {

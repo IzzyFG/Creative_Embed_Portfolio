@@ -1,5 +1,5 @@
 ---
-title: homepage
+title: pfoject_2
 layout: default
 filename: project_2.md
 --- 
