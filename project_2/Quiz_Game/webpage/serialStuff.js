@@ -25,14 +25,14 @@ var timerID = document.getElementById("time");
 document.addEventListener('click', async () => {
   console.log("user click");
   // Prompt user to select any serial port.
-  // var port = await navigator.serial.requestPort()
-  // be sure to set the baudRate to match the ESP32 code
-  // await port.open({ baudRate: 115200 });
-  // let decoder = new TextDecoderStream();
-  // inputDone = port.readable.pipeTo(decoder.writable);
-  // inputStream = decoder.readable;
+  var port = await navigator.serial.requestPort()
+  be sure to set the baudRate to match the ESP32 code
+  await port.open({ baudRate: 115200 });
+  let decoder = new TextDecoderStream();
+  inputDone = port.readable.pipeTo(decoder.writable);
+  inputStream = decoder.readable;
 
-  // reader = inputStream.getReader();
+  reader = inputStream.getReader();
   $('#startModal').modal('hide');
   readLoop();
 }, {once : true});
