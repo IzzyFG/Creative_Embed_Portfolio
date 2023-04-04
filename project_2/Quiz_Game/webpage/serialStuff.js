@@ -26,7 +26,7 @@ document.addEventListener('click', async () => {
   console.log("user click");
   // Prompt user to select any serial port.
   var port = await navigator.serial.requestPort()
-  be sure to set the baudRate to match the ESP32 code
+  // be sure to set the baudRate to match the ESP32 code
   await port.open({ baudRate: 115200 });
   let decoder = new TextDecoderStream();
   inputDone = port.readable.pipeTo(decoder.writable);
@@ -240,7 +240,7 @@ function startQuiz(){
 function endQuiz(){
   var temp = 29 - timeLeft;
   const para = document.createElement("p");
-  const node = document.createTextNode("Finished in "+timeLeft +" seconds with a score of " + score);
+  const node = document.createTextNode("Finished in "+temp +" seconds with a score of " + score);
   para.appendChild(node);
 
   const element = document.getElementById('modal-text');
