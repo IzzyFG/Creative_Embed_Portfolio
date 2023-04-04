@@ -31,8 +31,9 @@ filename: project_2.md
 ### Steps to recreate project
 
 1. Install VS code
-2. Install PlatformIO from marketplace
-3. Create New Project with PlatformIO PIO Home
+2. Install Live Server from marketplace
+3. Install PlatformIO from marketplace
+4. Create New Project with PlatformIO PIO Home
     1. Select Board TTGO T1
     2. Match monitor_speed in platformio.ini to serial monitor speed of VSCode
 
@@ -50,18 +51,32 @@ filename: project_2.md
     1. Open VScode
     2. Open PlatformIO
     3. Select 'Pick a folder'
-    4. Select 'Creative_Embed_Portfolio/project_2/Quiz_Game'
+    4. Select `Creative_Embed_Portfolio/project_2/Quiz_Game`
 
 3. Upload code to TTGO T1
     1. Connect TTGO T1 to computer
     2. Ensure no wires are connected to outputs
-    3. Open command pallete "ctrl + p"
+    3. Open command pallete "ctrl + shift + p"
     4. Type "Platform IO: upload" and select item
 
 4. Open website locally on computer
-    1. Launch a chromiun browser
-    2. Get full path of "/Embedded%20Design/Creative_Embed_Portfolio/project_2/Quiz_Game/webpage/index.html"
-    3. Type full path in browser address bar
+    1. Open `Creative_Embed_Portfolio\project_2\Quiz_Game\webpage\index.html` in VSCode
+    2. Open command pallete "ctrl + shift + p"
+    3. Type "Live Server: Open with Live Server" and select item
+
+## Difficulties in Project
+
+I found it was difficult to be restricted to only using JavaScript to mutate the
+html page. Also by necessity I could only use one JavaScript file since the
+output from the microcrontoller had to be accessible at every stage of the page.
+
+Through utilizing different json files to hold the different quizzes instead of
+statically holding them in hidden fields and revealing when the user was at
+that question led to quite a few difficutlies in importing information. I chose
+to have the data in json files that way the buttons/questions reference id's
+would stay the same for all of the other functions. This led to be having to
+utilize a server (through the Live Server extension) in order to use the fetch
+API.
 
 ## Creative Documentation
 

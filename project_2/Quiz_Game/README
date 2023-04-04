@@ -4,6 +4,7 @@
 
 1. VS code
 2. VS code extension PlatformIO
+3. VS code extension Live Server
 
 ## To run project
 
@@ -22,10 +23,25 @@
 3. Upload code to TTGO T1
     1. Connect TTGO T1 to computer
     2. Ensure no wires are connected to outputs
-    3. Open command pallete "ctrl + p"
+    3. Open command pallete "ctrl + shift + p"
     4. Type "Platform IO: upload" and select item
 
 4. Open website locally on computer
-    1. Launch a chromiun browser
-    2. Get full path of "/Embedded%20Design/Creative_Embed_Portfolio/project_2/Quiz_Game/webpage/index.html"
-    3. Type full path in browser address bar
+    1. Open `Creative_Embed_Portfolio\project_2\Quiz_Game\webpage\index.html` in VSCode
+    2. Open command pallete "ctrl + shift + p"
+    3. Type "Live Server: Open with Live Server" and select item
+
+## Quiz Sources
+
+1. [NYC](https://www.factmonster.com/take-quiz/new-york-city)
+2. [Music](https://www.usefultrivia.com/music_trivia/)
+3. [Sports](https://www.usefultrivia.com/sports_trivia/)
+4. [Movies](https://www.rd.com/article/movie-trivia-facts/)
+
+## Future Features
+
+1. Multiple Quiz sources
+2. Add to github pages website
+3. Add scoreboard
+4. Randomize order of questions and answers
+5. Pull questions from a larger question bank

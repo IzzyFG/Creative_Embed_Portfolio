@@ -1,0 +1,104 @@
+{
+    "quiz":[
+      {
+        "q":"New York City is home to the country's largest zoo, which features more than 4,000 animals. What is the name of the zoo?",
+        "ansr":[
+          "Central Park Zoo",
+          "Bronx Zoo",
+          "Prospect Park Zoo",
+          "The Buffalo Zoo"
+        ],
+        "correct":2
+      },
+      {
+        "q":"The New York Aquarium is located in which New York City borough?",
+        "ansr":[
+          "Queens",
+          "Bronx",
+          "Brooklyn",
+          "Manhattan"
+        ],
+        "correct":3
+      },
+      {
+        "q":"In 2007, what contemporary art museum opened their new venue on Bowery Street in Manhattan?",
+        "ansr":[
+          "The New Museum",
+          "The Metropolitan Museum of Art",
+          "The Museum of Modern Art",
+          "Chelsea Art Museum "
+        ],
+        "correct":1
+      },
+      {
+        "q":"What stadium located in Flushing, Queens, is home to the New York Mets?",
+        "ansr":[
+          "Yankee Stadium",
+          "Ebbets Field",
+          "Citi Field",
+          "Shea Stadium"
+        ],
+        "correct":3
+      },
+      {
+        "q":"What building was called the \"eighth world wonder\" when it was built in 1931?",
+        "ansr":[
+          "Viacom Building",
+          "Worldwide Plaza",
+          "Empire State Building",
+          "TimeWarner Building"
+        ],
+        "correct":3
+      },
+      {
+        "q":"What famous statue was shipped from France in 350 pieces and assembled in New York?",
+        "ansr":[
+          "Civic Fame",
+          "Statue of Atlas",
+          "Eiffel Tower",
+          "Statue of Liberty"
+        ],
+        "correct":4
+      },
+      {
+        "q":"What train station in Manhattan, built in 1913, often has art exhibits in a wing called Vanderbilt Hall?",
+        "ansr":[
+          "Penn Station",
+          "Harlem Station",
+          "World Trade Center PATH Station",
+          "Grand Central Station"
+        ],
+        "correct":4
+      },
+      {
+        "q":"What complex of buildings located between 48th St. and 51st St., and Fifth Ave. and the Avenue of the Americas was built between 1931 and 1939?",
+        "ansr":[
+          "Rockefeller Center",
+          "Radio City Music Hall",
+          "Madison Square Garden",
+          "Central Park"
+        ],
+        "correct":1
+      },
+      {
+        "q":"Where were immigrants entering the United States through the port of New York medically and legally inspected?",
+        "ansr":[
+          "Ellis Island",
+          "Angel Island",
+          "New York City Hall",
+          "The Algonquin"
+        ],
+        "correct":1
+      },
+      {
+        "q":"What museum in Manhattan, which features 45 permanent exhibition halls, also publishes 10 magazine issues every year?",
+        "ansr":[
+          "The Metropolitan Museum of Art",
+          "Guggenheim Museum",
+          "The Frick Collection",
+          "American Museum of Natural History"
+        ],
+        "correct":4
+      }
+    ]
+  }

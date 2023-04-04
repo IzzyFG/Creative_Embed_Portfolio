@@ -1,0 +1,104 @@
+{
+    "quiz":[
+      {
+        "q":"What pitcher holds the record for most complete games in an MLB career?",
+        "ansr":[
+          "Cy Young",
+          "Don Sutton",
+          "Roy Hallady",
+          "Nolan Ryan"
+        ],
+        "correct":1
+      },
+      {
+        "q":"What coach came off the bench to play for his team in the Stanley Cup finals?",
+        "ansr":[
+          "Toe Blake",
+          "Lester Patrick",
+          "Wayne Gretzky",
+          "Dick Irvin"
+        ],
+        "correct":2
+      },
+      {
+        "q":"Who was the only person in NBA history to be named Most Valuable Player, Coach of the Year, and Executive of the Year?",
+        "ansr":[
+          "Lary Bird",
+          "Phil Jackson",
+          "Micheal Jordan",
+          "Bil Russel"
+        ],
+        "correct":1
+      },
+      {
+        "q":"What country won the first World Cup?",
+        "ansr":[
+          "Argentina",
+          "Switzerland",
+          "Uruguay",
+          "Brazil"
+        ],
+        "correct":3
+      },
+      {
+        "q":"What MLB player holds the record for most games played with no World Series appearances?",
+        "ansr":[
+          "Joe Torre",
+          "Ken Griffey, Jr.",
+          "Yogi Berra",
+          "Rafael Palmeiro"
+        ],
+        "correct":4
+      },
+      {
+        "q":"What was the most points scored by one team in a football game?",
+        "ansr":[
+          "149",
+          "222",
+          "117",
+          "85"
+        ],
+        "correct":2
+      },
+      {
+        "q":"What pitcher threw the only no-hit game in World Series history?",
+        "ansr":[
+          "Sandy Koufax",
+          "Roger Clemens",
+          "Don Larsen",
+          "Nolan ryan"
+        ],
+        "correct":3
+      },
+      {
+        "q":"What sport was officially banned in Scotland three times between 1457 and 1502?",
+        "ansr":[
+          "Boxing",
+          "Horse Racing",
+          "Golf",
+          "Cricket"
+        ],
+        "correct":3
+      },
+      {
+        "q":"Whose ear did Mike Tyson bite off during a 1997 boxing match?",
+        "ansr":[
+          "Evander Holyfield",
+          "Lennox Lewis",
+          "Buster Douglas",
+          "Micheal Spinks"
+        ],
+        "correct":1
+      },
+      {
+        "q":"Who was the only college football player to win the Heisman Trophy twice?",
+        "ansr":[
+          "Jay Berwanger",
+          "Frank Sinkwich",
+          "Earl Campbell",
+          "Archie Green"
+        ],
+        "correct":4
+      }
+    ]
+  }

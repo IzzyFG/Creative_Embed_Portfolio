@@ -1,0 +1,104 @@
+{
+    "quiz":[
+      {
+        "q":"Who was awarded the very first gold record?",
+        "ansr":[
+          "Pery Como",
+          "The Beatles",
+          "Elvis Presley",
+          "Nat King Cole"
+        ],
+        "correct":1
+      },
+      {
+        "q":"What pop singer is known as \"The Material Girl\"?",
+        "ansr":[
+          "Britney Spears",
+          "Christina Aguilera",
+          "Taylor Swift",
+          "Madonna"
+        ],
+        "correct":4
+      },
+      {
+        "q":"How much pressure do the strings in a grand piano exert on the frame?",
+        "ansr":[
+          "300 lbs",
+          "3 tons",
+          "30 lbs",
+          "30 tons"
+        ],
+        "correct":4
+      },
+      {
+        "q":"What is the oldest surviving musical instrument?",
+        "ansr":[
+          "Lyre",
+          "Trumpet",
+          "Flute",
+          "Drum"
+        ],
+        "correct":3
+      },
+      {
+        "q":"What singer holds the world record for most words in a hit single?",
+        "ansr":[
+          "Eminem",
+          "Busta Rhymes",
+          "Crucified",
+          "50 Cent"
+        ],
+        "correct":1
+      },
+      {
+        "q":"Which jazz musician was known for playing a bent trumpet?",
+        "ansr":[
+          "Louis Armstrong",
+          "Chet Baker",
+          "Dizzy Gillepsie",
+          "Miles Davis"
+        ],
+        "correct":3
+      },
+      {
+        "q":"What is the longest running stage musical?",
+        "ansr":[
+          "Cats",
+          "Phantom of the Opera",
+          "Chicago",
+          "The Fantasticks"
+        ],
+        "correct":4
+      },
+      {
+        "q":"What did Freddie Mercury attribute his enhanced vocal range to?",
+        "ansr":[
+          "Extra Teeth",
+          "Lots of Practice",
+          "Genetics",
+          "Larger Lungs"
+        ],
+        "correct":1
+      },
+      {
+        "q":"What was the band known as Linkin Park originally called?",
+        "ansr":[
+          "Hybrid Turkey",
+          "Reanimators",
+          "Xero",
+          "Meteora"
+        ],
+        "correct":3
+      },
+      {
+        "q":"Which Johnny Cash song did an advertising company want to use for a hemorrhoids ad?",
+        "ansr":[
+          "Cry Cry Cry",
+          "Ring of Fire",
+          "Hurt",
+          "All I do is Drive"
+        ],
+        "correct":2
+      }
+    ]
+  }

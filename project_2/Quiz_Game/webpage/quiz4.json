@@ -1,0 +1,104 @@
+{
+    "quiz":[
+      {
+        "q":"The code in The Matrix comes from what food recipes?",
+        "ansr":[
+          "Dumplings",
+          "Stir-fry",
+          "Pad Thai",
+          "Sushi"
+        ],
+        "correct":4
+      },
+      {
+        "q":"Who actually drew the sketch of Rose in Titanic?",
+        "ansr":[
+          "Leonardo DiCaprio",
+          "Billy Zane",
+          "James Cameron",
+          "Kathy Bates"
+        ],
+        "correct":3
+      },
+      {
+        "q":"Which country does Forrest Gump travel to as part of the All-American Ping-Pong Team?",
+        "ansr":[
+          "Vietnam",
+          "China",
+          "Sweden",
+          "France"
+        ],
+        "correct":2
+      },
+      {
+        "q":"Which famous Pulp Fiction scene was filmed backward?",
+        "ansr":[
+          "Vincent and Mia's dance scene",
+          "Mia's overdose scene",
+          "The \"royale with cheese\" scene",
+          "The Ezekiel 25:17 scene"
+        ],
+        "correct":2
+      },
+      {
+        "q":"What is the name of the fictional land where Frozen takes place?",
+        "ansr":[
+          "Arendelle",
+          "Naples",
+          "Florin",
+          "Grimm"
+        ],
+        "correct":1
+      },
+      {
+        "q":"What score did Elle Woods get on her LSAT in Legally Blonde?",
+        "ansr":[
+          "155",
+          "166",
+          "170",
+          "179"
+        ],
+        "correct":4
+      },
+      {
+        "q":"What was the top-grossing movie of 2014?",
+        "ansr":[
+          "The Hunger Games: Mockingjay Part 1",
+          "The Lego Movie",
+          "Captain America: The Winter Soldier ",
+          "Guardians of the Galaxy"
+        ],
+        "correct":4
+      },
+      {
+        "q":"What item is in every Fight Club scene?",
+        "ansr":[
+          "A Coca-Cola can",
+          "A Starbucks cup",
+          "A Dunkin’ donut",
+          "A Pepsi bottle"
+        ],
+        "correct":2
+      },
+      {
+        "q":"Which actor hasn’t played the Joker?",
+        "ansr":[
+          "Jack Nicholson",
+          "Sean Penn",
+          "Jared Leto",
+          "Mark Hamill"
+        ],
+        "correct":2
+      },
+      {
+        "q":"Which singer starred alongside Steve Martin in 2006’s remake of The Pink Panther?",
+        "ansr":[
+          "Beyoncé",
+          "Britney Spears",
+          "Rihanna",
+          "Mariah Carey"
+        ],
+        "correct":1
+      }
+    ]
+  }
