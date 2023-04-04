@@ -73,7 +73,7 @@ function newQuiz(){
   document.getElementById("btn1").innerText="NYC";
   document.getElementById("btn2").innerText="Music";
   document.getElementById("btn3").innerText="Sports";
-  document.getElementById("btn4").innerText="btn4";
+  document.getElementById("btn4").innerText="Film";
 }
 
 /* 
