@@ -1,10 +1,10 @@
 ---
-title: pfoject_2
+title: project_2
 layout: default
 filename: project_2.md
 --- 
 
-# Serial Project: Quiz Game
+# Serial Project: [Quiz Game](Quiz_Game/webpage/)
 
 ## Technical Documentation
 
@@ -64,6 +64,10 @@ filename: project_2.md
     2. Open command pallete "ctrl + shift + p"
     3. Type "Live Server: Open with Live Server" and select item
 
+OR
+
+4. Open [website](Quiz_Game/webpage/) hosted on GitHub Pages
+ 
 ## Difficulties in Project
 
 I found it was difficult to be restricted to only using JavaScript to mutate the
