@@ -28,4 +28,7 @@ to display the input. With limited ability to create larger scenes in HTML/JS I 
 create a simple quiz/trivia game that the user can choose from 1 of 4 topics
 for.
 
+
+## [Project 3] (./project_3)
+
 ## [Final Project] (./final_proj)
