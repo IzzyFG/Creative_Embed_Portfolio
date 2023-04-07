@@ -15,8 +15,7 @@ to display the input. With limited ability to create larger scenes in HTML/JS I
 decided to create a simple quiz/trivia game that the user can choose from 1 of 4
 topics for.
 
-## [Technical Documentation](https://github.com/IzzyFG/Creative_Embed_Portfolio/blob/04b4d150e2a33755a646f14974aebe55d05a7d08/project_2/Quiz_Game/README)
-
+## [Technical Documentation](https://github.com/IzzyFG/Creative_Embed_Portfolio/tree/main/project_2/Quiz_Game#readme)
 
 ## Difficulties in Project
 
