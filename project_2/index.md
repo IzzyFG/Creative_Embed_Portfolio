@@ -4,9 +4,11 @@ layout: default
 filename: project_2.md
 --- 
 
+[>> Back](../../Creative_Embed_Portfolio/)
 # Serial Project: [Quiz Game](Quiz_Game/webpage/)
 
-## Technical Documentation
+<details>
+  <summary style = "font-size:20px" >Technical Documentation</summary>
 
 ### Design
 
@@ -52,6 +54,8 @@ filename: project_2.md
     2. Open PlatformIO
     3. Select 'Pick a folder'
     4. Select `Creative_Embed_Portfolio/project_2/Quiz_Game`
+    5. Ensure the monitor_speed in `Quiz_Game/platformio.ini` is set to the
+    correct speed of matching the serial monitor speed (in my case 115200)
 
 3. Upload code to TTGO T1
     1. Connect TTGO T1 to computer
@@ -82,7 +86,11 @@ would stay the same for all of the other functions. This led to be having to
 utilize a server (through the Live Server extension) in order to use the fetch
 API.
 
-## Creative Documentation
+</details>
+
+<details>
+  <summary style = "font-size:20px">Creative Documentation</summary>
+
 
 First I prototyped the design. I wanted a simple enclosure that would have a button and joystick stick out from one side and allow for usb C access on side.
 
@@ -106,3 +114,5 @@ Then I cut everything to size and taped the sides for a nicer finish:
 Taping the project closed also allows for it to be a bit of a mystery, which is how it is intended to seem. Since the whole project is designed around quizzes I wanted the user to feel uncertain about what truly lies ahead.
 
 ![Youtube video](https://youtube.com/shorts/36etN84fEU0)
+
+</details>
