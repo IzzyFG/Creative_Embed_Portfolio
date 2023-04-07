@@ -53,5 +53,3 @@ Then I cut everything to size and taped the sides for a nicer finish:
 Taping the project closed also allows for it to be a bit of a mystery, which is how it is intended to seem. Since the whole project is designed around quizzes I wanted the user to feel uncertain about what truly lies ahead.
 
 ![Youtube video](https://youtube.com/shorts/36etN84fEU0)
-
-</details>
