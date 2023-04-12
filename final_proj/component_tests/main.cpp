@@ -4,9 +4,7 @@
 TFT_eSPI tft = TFT_eSPI();  // Invoke library, pins defined in User_Setup.h
 
 /* pin information */
-int motorPorts[] = {14, 27, 26, 25};
 int btnPins[] = {0, 4, 2}; //p1,p2, reset
-// int resetPin = 2;
 /* pin information end */
 
 /* player variables */
@@ -89,12 +87,6 @@ void(* resetFunc) (void) = 0;
 
 void setup()
 {
-	// set motor pins to output
-	for (int i = 0; i < 4; i++)
-	{
-		pinMode(motorPorts[i], OUTPUT);
-	}
-
 	// set btn pins to input w/ internal resistors
 	for (int i = 0; i < 3; i++)
 	{
