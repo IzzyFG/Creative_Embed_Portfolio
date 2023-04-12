@@ -25,3 +25,7 @@
         ```C
         #include <User_Setups/Setup25_TTGO_T_Display.h>    // Setup file for ESP32 and TTGO T-Display ST7789V SPI bus TFT
         ```
+
+## References
+
+- [Button Class](https://arduino.stackexchange.com/a/48244)
