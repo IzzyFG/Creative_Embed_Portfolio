@@ -6,8 +6,7 @@ filename: index.md
 
 [>> Back](../../Creative_Embed_Portfolio/)
 
-
-## [Technical Documentation](https://github.com/IzzyFG/Creative_Embed_Portfolio/tree/main/final_proj/Tug_Rope#readme)
+[Technical Documentation](https://github.com/IzzyFG/Creative_Embed_Portfolio/tree/main/final_proj/Tug_Rope#readme)
 
 # Final Project: Tug of War
 
