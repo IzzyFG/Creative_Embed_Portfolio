@@ -156,8 +156,8 @@ void showmsg(const char * msg[], int size)
 	int32_t y = 15;
 	tft.setTextSize(1);
 	tft.setTextDatum(TC_DATUM);
-	tft.fillScreen(TFT_BLUE);
-	tft.setTextColor(TFT_WHITE, TFT_BLUE);
+	tft.fillScreen(TFT_NAVY);
+	tft.setTextColor(TFT_SILVER, TFT_NAVY);
 
 	for (int i = 0; i<size; i++){
 		tft.drawString(msg[i], x, y);
@@ -165,16 +165,36 @@ void showmsg(const char * msg[], int size)
 	}
 }
 
-void showLone(const char * msg){
+void showLone(const char * msg, int col){
 	int32_t x = 120;
 	int32_t y = 70;
 	tft.setTextSize(2);
 	tft.setTextDatum(CC_DATUM);
-	tft.fillScreen(TFT_BLUE);
-	tft.setTextColor(TFT_WHITE, TFT_BLUE);
+	tft.fillScreen(col);
+	tft.setTextColor(TFT_WHITE, col);
 
 	tft.drawString(msg, x, y);
 }
+
+void startMessage(){
+	const char * msg[3] ={"Tug of War:","The ultimate test of","speed and strength"};
+	showmsg(msg, 3);
+	delay(4000);
+
+	const char * msg2 [3]= {
+		"But strength and","speed isn't all.","Timing is key."};
+	showmsg(msg2, 3);
+	delay(4000);
+
+	const char * msg3 [2]= {
+		"Press your button","to pull the rope"};
+	showmsg(msg3, 2);
+	delay(3000);
+
+	showLone("Get ready!", TFT_MAROON);
+	delay(3000);
+}
+
 /* setup and loop*/
 void setup()
 {
@@ -215,36 +235,33 @@ void loop()
 
 		resetFunc();
 	}
+
+	startMessage();
+
 	srand((unsigned) time(NULL));
+	bool won = false; // when string reaches x point won = true
 
-	const char * msg[3] ={"Tug of War:","The ultimate test of","speed and strength"};
-	showmsg(msg, 3);
-	delay(4000);
+	/*TODO:add color change for tug?*/
+	int player = 0;
+	while (won == false){
+		delay(rand()%10);
+		showLone("PULL!!", TFT_DARKCYAN);
 
-	const char * msg2 [3]= {
-		"But strength and","speed isn't all.","Timing is key."};
-	showmsg(msg2, 3);
-	delay(4000);
+		int player = pull();
+		bool direction = player>0?true:false;
 
-	const char * msg3 [2]= {
-		"Press your button","to pull the rope"};
-	showmsg(msg3, 2);
-	delay(3000);
+		showLone("...wait", TFT_MAROON);
 
-	showLone("Get ready!");
-	delay(3000);
+		moveSteps(direction, 32*4, 4);
+		steps += player * 32*4;
 
-	showLone("PULL");
-	delay(6000);
+		if (abs(steps) == 64){
+			won == true;
+		}
+	}
+	char * winner;
+	player = player>0? 1: 2;
+	sprintf(winner, "Player %d Wins", player);
 
-	// bool won = false; // when string reaches x point won = true
-
-	// while (won == false){
-	// 	int player = pull();
-	// 	bool direction = player>0?true:false;
-
-	// 	moveSteps(direction, 32*4, 4);
-	// 	steps += player * 32*4;
-
-	// }
+	showLone(winner, TFT_ORANGE);
 }
