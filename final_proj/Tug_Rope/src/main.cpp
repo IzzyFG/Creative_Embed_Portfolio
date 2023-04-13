@@ -14,7 +14,6 @@ TFT_eSPI tft = TFT_eSPI();  // Invoke library, pins defined in User_Setup.h
 /* pin information */
 int motorPorts[] = {14, 27, 26, 25};
 int btnPins[] = {0, 4, 2}; //p1,p2, reset
-// int resetPin = 2;
 /* pin information end */
 
 /* player variables */
@@ -25,8 +24,8 @@ short timerRunning;
 /* player variables end */
 
 /* motor variables */
-int steps;        // Used to set HOME position + == CW - == CCW
-/* motor variables */
+int steps; // Used to set HOME position + == CW - == CCW
+/* motor variables end*/
 
 //declare reset function at address 0
 void(* resetFunc) (void) = 0;
