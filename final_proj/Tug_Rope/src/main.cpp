@@ -154,6 +154,7 @@ void showmsg(const char * msg[], int size)
 {
 	int32_t x = 120;
 	int32_t y = 15;
+	tft.setTextSize(1);
 	tft.setTextDatum(TC_DATUM);
 	tft.fillScreen(TFT_BLUE);
 	tft.setTextColor(TFT_WHITE, TFT_BLUE);
@@ -164,6 +165,16 @@ void showmsg(const char * msg[], int size)
 	}
 }
 
+void showLone(const char * msg){
+	int32_t x = 120;
+	int32_t y = 70;
+	tft.setTextSize(2);
+	tft.setTextDatum(CC_DATUM);
+	tft.fillScreen(TFT_BLUE);
+	tft.setTextColor(TFT_WHITE, TFT_BLUE);
+
+	tft.drawString(msg, x, y);
+}
 /* setup and loop*/
 void setup()
 {
@@ -205,32 +216,35 @@ void loop()
 		resetFunc();
 	}
 	srand((unsigned) time(NULL));
-	
 
 	const char * msg[3] ={"Tug of War:","The ultimate test of","speed and strength"};
-	int size = sizeof(msg)/sizeof(msg[0]);
-
-	showmsg(msg, size);
-	delay(6000);
+	showmsg(msg, 3);
+	delay(4000);
 
 	const char * msg2 [3]= {
 		"But strength and","speed isn't all.","Timing is key."};
-	size = sizeof(msg2)/sizeof(msg2[0]);
-	showmsg(msg2, size);
+	showmsg(msg2, 3);
+	delay(4000);
+
+	const char * msg3 [2]= {
+		"Press your button","to pull the rope"};
+	showmsg(msg3, 2);
+	delay(3000);
+
+	showLone("Get ready!");
+	delay(3000);
+
+	showLone("PULL");
 	delay(6000);
-	const char * msg3 [1]= {"Get ready!"};
-	showmsg(msg3, 1);
-	delay(6000);
 
+	// bool won = false; // when string reaches x point won = true
 
-	bool won = false; // when string reaches x point won = true
+	// while (won == false){
+	// 	int player = pull();
+	// 	bool direction = player>0?true:false;
 
-	while (won == false){
-		int player = pull();
-		bool direction = player>0?true:false;
+	// 	moveSteps(direction, 32*4, 4);
+	// 	steps += player * 32*4;
 
-		moveSteps(direction, 32*4, 4);
-		steps += player * 32*4;
-
-	}
+	// }
 }
