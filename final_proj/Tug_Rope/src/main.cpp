@@ -254,10 +254,11 @@ void loop()
 		moveSteps(direction, 32*4, 4);
 		steps += player * 32*4;
 
-		if (abs(steps) == 64){
+		if (abs(steps) == 32*64){
 			won == true;
 		}
 	}
+
 	char * winner;
 	player = player>0? 1: 2;
 	sprintf(winner, "Player %d Wins", player);
