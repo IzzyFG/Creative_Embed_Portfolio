@@ -20,8 +20,6 @@ int btnPins[] = {12, 13, 15}; //p1,p2, reset
 volatile bool btnpressed = false;
 volatile bool btn1press,  btn2press, resetbtn;
 bool won;
-// unsigned long btn_time, last_btn_time = 0;
-// short timerRunning;
 int player;
 /* player variables end */
 
@@ -32,7 +30,7 @@ int steps; // Used to set HOME position + == CW - == CCW
 /* motor variables end*/
 
 //declare reset function at address 0
-// void(* resetFunc) (void) = 0;
+void(* resetFunc) (void) = 0;
 
 /* player/button functions*/
 
@@ -249,58 +247,33 @@ void loop()
 			won = pull(pstr, player, won);
 		}
 
-		// if(btnpressed == true){
-		// // 	showLone("btnpress", TFT_ORANGE);
-		// // 	delay(2000);
-		// 	noInterrupts();
-		// 	const char * pstr;
-		// 	if(btn1press== true){
-		// 		player = 1;
-		// 		btn1press =  false;
-		// 		pstr = "One";
-		// 	}
-		// 	if(btn2press == true){
-		// 		player = -1;
-		// 		btn2press =  false;
-		// 		pstr = "Two";
-		// 	}
-		// 	btnpressed = false;
-		// 	interrupts();
-		// 	won = pull(pstr, player, won);
-		// }
-		// if(!won){
-		// 	player = 0;
-		// }
-		// else{
-		// 	player = player>0? 1: 2;
-		// }
-		// showLone("test", TFT_ORANGE);
-		// delay(2000);
-
-	// }
-
+	
 	}
 	else{
 		// sprintf breaks program somehow
+		noInterrupts();
+
 		if (player == 1){
-			const char  * msg [2] = {"Player 1", "Wins"};
-			showmsg(msg, 3,  1, TFT_ORANGE);
+			const char  * winmsg [3] = {"Player", "One", "Wins!!"};
+			showmsg(winmsg, 3,  1, TFT_ORANGE);
 		}
 		else{
-			const char  * msg [2] = {"Player 2", "Wins"};
-			showmsg(msg, 3,  1, TFT_ORANGE);
+			const char  * winmsg [3] = {"Player ", "Two", "Wins!!"};
+			showmsg(winmsg, 3,  1, TFT_ORANGE);
 		}
 
 		delay(6000);
 
 		/* reset button pressed */
-		// if (digitalRead(btnPins[2]) == HIGH){ 
-		// 		resetMotor();
-		// 		steps = 0;
-		// 	// 	btnpressed = false;
-		// 	// 	plrbtn = 0;
+		if (btnpressed == true){ 
+				resetMotor();
+				steps = 0;
+				noInterrupts();
+				btnpressed = false;
+				interrupts();
+				resetFunc();
+		}
+		interrupts();
 
-		// 		resetFunc();
-		// }
 	}
 }
