@@ -27,10 +27,12 @@ int player;
 
 /* motor variables */
 int steps; // Used to set HOME position + == CW - == CCW
+// bool dirUser;
+
 /* motor variables end*/
 
 //declare reset function at address 0
-void(* resetFunc) (void) = 0;
+// void(* resetFunc) (void) = 0;
 
 /* player/button functions*/
 
@@ -40,24 +42,14 @@ void(* resetFunc) (void) = 0;
  */
 void IRAM_ATTR playerOne()
 {
-	// btn_time = millis();
-	// if(!plrbtn && btn_time-last_btn_time>250){
-	btnpressed = true;
-		// last_btn_time = btn_time;
+	// btnpressed = true;
 	btn1press = true;
-	// }
 }
 
 void IRAM_ATTR playerTwo()
 {
-	// btn_time = millis();
-	// if(!plrbtn && btn_time-last_btn_time>250){
-	btnpressed = true;
-	// 	last_btn_time = btn_time;
-	// btnpressed = 2;
+	// btnpressed = true;
 	btn2press = true;
-
-	// }
 }
 
 void IRAM_ATTR resetBtn()
@@ -174,6 +166,16 @@ void setup()
 		pinMode(motorPorts[i], OUTPUT);
 	}
 
+	
+	tft.begin();
+	textSetup();
+	delay(5);
+	startMessage();
+
+	srand((unsigned) time(NULL));
+	
+	delay(2000);
+
 	// set btn pins to input w/ internal resistors
 	//plyr1
 	pinMode(btnPins[0], INPUT_PULLUP);
@@ -186,15 +188,7 @@ void setup()
 	//resetbutton
 	pinMode(btnPins[2], INPUT_PULLUP);
 
-	
-	tft.begin();
-	textSetup();
-	delay(5);
-	startMessage();
-
-	srand((unsigned) time(NULL));
-	
-	delay(2000);
+	showLone("PULL!!", TFT_DARKCYAN);
 }
 
 /*TODO: need to determine rotation amounts for string
@@ -205,17 +199,16 @@ void setup()
  */
 
 
-bool pull(int plyr, bool won){
+bool pull(const char * strp, int plyr, bool won){
 	delay(10);
-	noInterrupts();
-	bool direction = plyr>0?true:false;
+	// bool direction = plyr>0?true:false;
 
-	moveSteps(direction, 32*4, 4);
-	steps += plyr * 32*4;
-	
-	const char  * msg [3] = {"Player ", " "+player+'\0', "Pulled"};
-	showmsg(msg, 3,  1, TFT_ORANGE);
+	// moveSteps(direction, 32*4, 4);
+	steps += plyr * 32*16;
+	const char  * msg [3] = {"Player ", strp, "Pulled"};
+	showmsg(msg, 3,  1, TFT_NAVY);
 	delay(3000);
+	noInterrupts();
 
 	if (abs(steps) == 32*64){
 		won = true;
@@ -223,41 +216,58 @@ bool pull(int plyr, bool won){
 	if (won == false){
 		showLone("...wait", TFT_MAROON);
 		delay(rand()%10*1000);
+		interrupts();
 		showLone("PULL!!", TFT_DARKCYAN);
 	}
-	interrupts();
 	return won;
 }
 
 void loop()
 {
 	if (won == false){
-		
-		showLone("PULL!!", TFT_DARKCYAN);
-		delay(2000);
 
 		// bool won = false; // when string reaches x point won = true
 
-		player = 0;
-		bool direction;
-
-		if(btnpressed == true){
-		// 	showLone("btnpress", TFT_ORANGE);
-		// 	delay(2000);
+		const char * pstr;
+		if(btn1press== true){
 			noInterrupts();
-			if(btn1press== true){
-				player = 1;
-				btn1press =  false;
-			}
-			if(btn2press == true){
-				player = -1;
-				btn2press =  false;
-
-			}
-			btnpressed = false;
+			btn1press =  false;
+			btn2press = false;
 			interrupts();
-			won = pull(player, won);
+			player = 1;
+			pstr = "One";
+			won = pull(pstr, player, won);
 		}
+		if(btn2press == true){
+			noInterrupts();
+			btn1press =  false;
+			btn2press =  false;
+			interrupts();
+			player = -1;
+			pstr = "Two";
+
+			won = pull(pstr, player, won);
+		}
+
+		// if(btnpressed == true){
+		// // 	showLone("btnpress", TFT_ORANGE);
+		// // 	delay(2000);
+		// 	noInterrupts();
+		// 	const char * pstr;
+		// 	if(btn1press== true){
+		// 		player = 1;
+		// 		btn1press =  false;
+		// 		pstr = "One";
+		// 	}
+		// 	if(btn2press == true){
+		// 		player = -1;
+		// 		btn2press =  false;
+		// 		pstr = "Two";
+		// 	}
+		// 	btnpressed = false;
+		// 	interrupts();
+		// 	won = pull(pstr, player, won);
+		// }
 		// if(!won){
 		// 	player = 0;
 		// }
@@ -270,11 +280,7 @@ void loop()
 	// }
 
 	}
-	// while (won == false){
-				
-	// 	
-
-	if (won == true){
+	else{
 		// sprintf breaks program somehow
 		if (player == 1){
 			const char  * msg [2] = {"Player 1", "Wins"};
@@ -285,16 +291,16 @@ void loop()
 			showmsg(msg, 3,  1, TFT_ORANGE);
 		}
 
-		delay(2000);
+		delay(6000);
+
 		/* reset button pressed */
+		// if (digitalRead(btnPins[2]) == HIGH){ 
+		// 		resetMotor();
+		// 		steps = 0;
+		// 	// 	btnpressed = false;
+		// 	// 	plrbtn = 0;
 
-		if (digitalRead(btnPins[2]) == LOW){ 
-				resetMotor();
-				steps = 0;
-			// 	btnpressed = false;
-			// 	plrbtn = 0;
-
-				resetFunc();
-		}
+		// 		resetFunc();
+		// }
 	}
 }
