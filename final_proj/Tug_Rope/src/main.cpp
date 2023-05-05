@@ -175,11 +175,11 @@ void setup()
 	// set btn pins to input w/ internal resistors
 	//plyr1
 	pinMode(btnPins[0], INPUT_PULLUP);
-	attachInterrupt(btnPins[0], playerOne, RISING);
+	attachInterrupt(digitalPinToInterrupt(btnPins[0]), playerOne, RISING);
 
 	//plyr2
 	pinMode(btnPins[1], INPUT_PULLUP);
-	attachInterrupt(btnPins[1], playerTwo, RISING);
+	attachInterrupt(digitalPinToInterrupt(btnPins[1]), playerTwo, RISING);
 
 	//resetbutton
 	pinMode(btnPins[2], INPUT_PULLUP);
@@ -199,6 +199,7 @@ void setup()
 
 
 bool pull(int plyr, bool won){
+	noInterrupts();
 	showLone("in pull", TFT_ORANGE);
 
 	bool direction = plyr>0?true:false;
@@ -220,11 +221,13 @@ bool pull(int plyr, bool won){
 		delay(rand()%10*1000);
 		showLone("PULL!!", TFT_DARKCYAN);
 	}
+	interrupts();
 	return won;
 }
 
 void loop()
 {
+	noInterrupts();
 	/* reset button pressed */
 	if (digitalRead(btnPins[2]) == LOW){ 
 		resetMotor();
@@ -240,6 +243,7 @@ void loop()
 	srand((unsigned) time(NULL));
 	
 	delay(2000);
+	interrupts();
 	showLone("PULL!!", TFT_DARKCYAN);
 
 	bool won = false; // when string reaches x point won = true
@@ -248,8 +252,8 @@ void loop()
 	bool direction;
 	while (won == false){
 
-		noInterrupts();
 		if(btnpressed == true){
+			noInterrupts();
 			if(btn1press){
 				player = 1;
 			}
