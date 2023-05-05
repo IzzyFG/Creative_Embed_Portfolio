@@ -12,15 +12,15 @@
 TFT_eSPI tft = TFT_eSPI();  // Invoke library, pins defined in User_Setup.h
 
 /* pin information */
-int motorPorts[] = {14, 27, 26, 25};
-int btnPins[] = {0, 4, 2}; //p1,p2, reset
+int motorPorts[] = {27, 26, 25, 33};
+int btnPins[] = {12, 13, 15}; //p1,p2, reset
 /* pin information end */
 
 /* player variables */
-int btnLast[] = {-1, -1}; /*last pressed values of p1, p2*/
-int btnTime[] = {-1, -1}; /*last pressed values of p1, p2*/
-unsigned long startTime, endTime1, endTime2;
-short timerRunning;
+volatile bool btnpressed, btn1press,  btn2press, resetbtn;
+// int player;
+// unsigned long btn_time, last_btn_time = 0;
+// short timerRunning;
 /* player variables end */
 
 /* motor variables */
@@ -36,65 +36,32 @@ void(* resetFunc) (void) = 0;
  * checks whether button IS pressed and was released from previous
  * compares the time for each button to see which was pressed first
  */
-void whichPlayer()
+void IRAM_ATTR playerOne()
 {
-	/* read both immediately to limit time spent running code after */
-	int pr1 = digitalRead(btnPins[0]);
-	int pr2 = digitalRead(btnPins[1]);
-
-	/* check if either buttons have been pressed*/
-	if (timerRunning == 1 && pr1 && !btnLast[0])
-	{
-		endTime1 = millis();
-		btnTime[0] = endTime1 - startTime;
-	}
-	if (timerRunning == 1 && pr2 && !btnLast[1])
-	{
-		endTime2 = millis();
-		btnTime[1] = endTime2 - startTime;
-	}
-
-	btnLast[0] = pr1;
-	btnLast[1] = pr2;
-	
+	// btn_time = millis();
+	// if(!plrbtn && btn_time-last_btn_time>250){
+	btnpressed = true;
+		// last_btn_time = btn_time;
+	btn1press = true;
+	// }
 }
 
-/*
- * TODO: 
- * - check for reset button 
- * - possibly add a win by x amount for button press (15ms/.015s ?)
- */
-int pull()
+void IRAM_ATTR playerTwo()
 {
-	// timer not running already
-	if (timerRunning == 0)
-	{ 
-		startTime = millis();
-		timerRunning = 1;
-		btnTime[0] = -1;
-		btnTime[1] = -1;
-	}
+	// btn_time = millis();
+	// if(!plrbtn && btn_time-last_btn_time>250){
+	btnpressed = true;
+	// 	last_btn_time = btn_time;
+	// btnpressed = 2;
+	btn2press = true;
 
-	int winner = 0; 
-	
-	while(timerRunning == 1)
-	{
+	// }
+}
 
-		whichPlayer();
-
-		if (btnTime[0]>btnTime[1])
-		{
-			timerRunning = 0;
-			winner = 1;
-		}
-		else if (btnTime[1]>btnTime[0])
-		{
-			timerRunning = 0;
-			winner = -1;
-		}
-	}
-
-	return winner;
+void IRAM_ATTR resetBtn()
+{
+	btnpressed = true;
+	resetbtn = true;
 }
 
 /* motor functions */
@@ -206,10 +173,17 @@ void setup()
 	}
 
 	// set btn pins to input w/ internal resistors
-	for (int i = 0; i < 3; i++)
-	{
-		pinMode(btnPins[i], INPUT_PULLUP);
-	}
+	//plyr1
+	pinMode(btnPins[0], INPUT_PULLUP);
+	attachInterrupt(btnPins[0], playerOne, RISING);
+
+	//plyr2
+	pinMode(btnPins[1], INPUT_PULLUP);
+	attachInterrupt(btnPins[1], playerTwo, RISING);
+
+	//resetbutton
+	pinMode(btnPins[2], INPUT_PULLUP);
+
 	
 	tft.begin();
 	textSetup();
@@ -223,14 +197,40 @@ void setup()
  * 4^3 = 64
  */
 
+
+bool pull(int plyr, bool won){
+	showLone("in pull", TFT_ORANGE);
+
+	bool direction = plyr>0?true:false;
+
+	moveSteps(direction, 32*4, 4);
+	steps += plyr * 32*4;
+	
+	char * msg;
+	int pulled = plyr>0? 1: 2;
+	sprintf(msg, "Player %d Pulled", pulled);
+	showLone(msg, TFT_ORANGE);
+	delay(3000);
+
+	if (abs(steps) == 32*64){
+		won = true;
+	}
+	if (won == false){
+		showLone("...wait", TFT_MAROON);
+		delay(rand()%10*1000);
+		showLone("PULL!!", TFT_DARKCYAN);
+	}
+	return won;
+}
+
 void loop()
 {
 	/* reset button pressed */
 	if (digitalRead(btnPins[2]) == LOW){ 
 		resetMotor();
 		steps = 0;
-		btnLast[0] = -1;
-		btnLast[1] = -1;
+	// 	btnpressed = false;
+	// 	plrbtn = 0;
 
 		resetFunc();
 	}
@@ -238,29 +238,36 @@ void loop()
 	startMessage();
 
 	srand((unsigned) time(NULL));
+	
+	delay(2000);
+	showLone("PULL!!", TFT_DARKCYAN);
+
 	bool won = false; // when string reaches x point won = true
 
-	/*TODO:add color change for tug?*/
 	int player = 0;
+	bool direction;
 	while (won == false){
-		delay(rand()%10);
-		showLone("PULL!!", TFT_DARKCYAN);
 
-		int player = pull();
-		bool direction = player>0?true:false;
-
-		showLone("...wait", TFT_MAROON);
-
-		moveSteps(direction, 32*4, 4);
-		steps += player * 32*4;
-
-		if (abs(steps) == 32*64){
-			won == true;
+		noInterrupts();
+		if(btnpressed == true){
+			if(btn1press){
+				player = 1;
+			}
+			if(btn2press){
+				player = -1;
+			}
+			interrupts();
+			won = pull(player, won);
+		}
+		if(!won){
+			player = 0;
+		}
+		else{
+			player = player>0? 1: 2;
 		}
 	}
 
 	char * winner;
-	player = player>0? 1: 2;
 	sprintf(winner, "Player %d Wins", player);
 
 	showLone(winner, TFT_ORANGE);
