@@ -17,10 +17,12 @@ int btnPins[] = {12, 13, 15}; //p1,p2, reset
 /* pin information end */
 
 /* player variables */
-volatile bool btnpressed, btn1press,  btn2press, resetbtn;
-// int player;
+volatile bool btnpressed = false;
+volatile bool btn1press,  btn2press, resetbtn;
+bool won;
 // unsigned long btn_time, last_btn_time = 0;
 // short timerRunning;
+int player;
 /* player variables end */
 
 /* motor variables */
@@ -116,14 +118,14 @@ void textSetup(){
  * NOTE: if you try to find size of the string here it will fail for some reason
  * TODO: add smthn to justify vertically
  */
-void showmsg(const char * msg[], int size)
+void showmsg(const char * msg[], int size, int fsize, int col)
 {
 	int32_t x = 120;
 	int32_t y = 15;
-	tft.setTextSize(1);
+	tft.setTextSize(fsize);
 	tft.setTextDatum(TC_DATUM);
-	tft.fillScreen(TFT_NAVY);
-	tft.setTextColor(TFT_SILVER, TFT_NAVY);
+	tft.fillScreen(col);
+	tft.setTextColor(TFT_SILVER, col);
 
 	for (int i = 0; i<size; i++){
 		tft.drawString(msg[i], x, y);
@@ -144,17 +146,17 @@ void showLone(const char * msg, int col){
 
 void startMessage(){
 	const char * msg[3] ={"Tug of War:","The ultimate test of","speed and strength"};
-	showmsg(msg, 3);
+	showmsg(msg, 3, 1, TFT_NAVY);
 	delay(4000);
 
 	const char * msg2 [3]= {
 		"But strength and","speed isn't all.","Timing is key."};
-	showmsg(msg2, 3);
+	showmsg(msg2, 3, 1, TFT_NAVY);
 	delay(4000);
 
 	const char * msg3 [2]= {
 		"Press your button","to pull the rope"};
-	showmsg(msg3, 2);
+	showmsg(msg3, 2, 1, TFT_NAVY);
 	delay(3000);
 
 	showLone("Get ready!", TFT_MAROON);
@@ -188,6 +190,11 @@ void setup()
 	tft.begin();
 	textSetup();
 	delay(5);
+	startMessage();
+
+	srand((unsigned) time(NULL));
+	
+	delay(2000);
 }
 
 /*TODO: need to determine rotation amounts for string
@@ -199,18 +206,15 @@ void setup()
 
 
 bool pull(int plyr, bool won){
+	delay(10);
 	noInterrupts();
-	showLone("in pull", TFT_ORANGE);
-
 	bool direction = plyr>0?true:false;
 
 	moveSteps(direction, 32*4, 4);
 	steps += plyr * 32*4;
 	
-	char * msg;
-	int pulled = plyr>0? 1: 2;
-	sprintf(msg, "Player %d Pulled", pulled);
-	showLone(msg, TFT_ORANGE);
+	const char  * msg [3] = {"Player ", " "+player+'\0', "Pulled"};
+	showmsg(msg, 3,  1, TFT_ORANGE);
 	delay(3000);
 
 	if (abs(steps) == 32*64){
@@ -227,52 +231,70 @@ bool pull(int plyr, bool won){
 
 void loop()
 {
-	noInterrupts();
-	/* reset button pressed */
-	if (digitalRead(btnPins[2]) == LOW){ 
-		resetMotor();
-		steps = 0;
-	// 	btnpressed = false;
-	// 	plrbtn = 0;
+	if (won == false){
+		
+		showLone("PULL!!", TFT_DARKCYAN);
+		delay(2000);
 
-		resetFunc();
-	}
+		// bool won = false; // when string reaches x point won = true
 
-	startMessage();
-
-	srand((unsigned) time(NULL));
-	
-	delay(2000);
-	interrupts();
-	showLone("PULL!!", TFT_DARKCYAN);
-
-	bool won = false; // when string reaches x point won = true
-
-	int player = 0;
-	bool direction;
-	while (won == false){
+		player = 0;
+		bool direction;
 
 		if(btnpressed == true){
+		// 	showLone("btnpress", TFT_ORANGE);
+		// 	delay(2000);
 			noInterrupts();
-			if(btn1press){
+			if(btn1press== true){
 				player = 1;
+				btn1press =  false;
 			}
-			if(btn2press){
+			if(btn2press == true){
 				player = -1;
+				btn2press =  false;
+
 			}
+			btnpressed = false;
 			interrupts();
 			won = pull(player, won);
 		}
-		if(!won){
-			player = 0;
+		// if(!won){
+		// 	player = 0;
+		// }
+		// else{
+		// 	player = player>0? 1: 2;
+		// }
+		// showLone("test", TFT_ORANGE);
+		// delay(2000);
+
+	// }
+
+	}
+	// while (won == false){
+				
+	// 	
+
+	if (won == true){
+		// sprintf breaks program somehow
+		if (player == 1){
+			const char  * msg [2] = {"Player 1", "Wins"};
+			showmsg(msg, 3,  1, TFT_ORANGE);
 		}
 		else{
-			player = player>0? 1: 2;
+			const char  * msg [2] = {"Player 2", "Wins"};
+			showmsg(msg, 3,  1, TFT_ORANGE);
+		}
+
+		delay(2000);
+		/* reset button pressed */
+
+		if (digitalRead(btnPins[2]) == LOW){ 
+				resetMotor();
+				steps = 0;
+			// 	btnpressed = false;
+			// 	plrbtn = 0;
+
+				resetFunc();
 		}
 	}
-
-	char * winner;
-	sprintf(winner, "Player %d Wins", player);
-
-	showLone(winner, TFT_ORANGE);
 }
