@@ -13,7 +13,7 @@ TFT_eSPI tft = TFT_eSPI();  // Invoke library, pins defined in User_Setup.h
 
 /* pin information */
 int motorPorts[] = {27, 26, 25, 33};
-int btnPins[] = {12, 13, 15}; //p1,p2, reset
+int btnPins[] = {13, 15, 12}; //p1,p2, reset
 /* pin information end */
 
 /* player variables */
@@ -40,19 +40,16 @@ void(* resetFunc) (void) = 0;
  */
 void IRAM_ATTR playerOne()
 {
-	// btnpressed = true;
 	btn1press = true;
 }
 
 void IRAM_ATTR playerTwo()
 {
-	// btnpressed = true;
 	btn2press = true;
 }
 
 void IRAM_ATTR resetBtn()
 {
-	btnpressed = true;
 	resetbtn = true;
 }
 
@@ -185,6 +182,8 @@ void setup()
 
 	//resetbutton
 	pinMode(btnPins[2], INPUT_PULLUP);
+	attachInterrupt(digitalPinToInterrupt(btnPins[2]), resetBtn, RISING);
+
 
 	showLone("PULL!!", TFT_DARKCYAN);
 }
@@ -199,9 +198,9 @@ void setup()
 
 bool pull(const char * strp, int plyr, bool won){
 	delay(10);
-	// bool direction = plyr>0?true:false;
+	bool direction = plyr>0?true:false;
 
-	// moveSteps(direction, 32*4, 4);
+	moveSteps(direction, 32*16, 3);
 	steps += plyr * 32*16;
 	const char  * msg [3] = {"Player ", strp, "Pulled"};
 	showmsg(msg, 3,  1, TFT_NAVY);
@@ -214,17 +213,15 @@ bool pull(const char * strp, int plyr, bool won){
 	if (won == false){
 		showLone("...wait", TFT_MAROON);
 		delay(rand()%10*1000);
-		interrupts();
 		showLone("PULL!!", TFT_DARKCYAN);
 	}
+	interrupts();
 	return won;
 }
 
 void loop()
 {
 	if (won == false){
-
-		// bool won = false; // when string reaches x point won = true
 
 		const char * pstr;
 		if(btn1press== true){
@@ -251,29 +248,27 @@ void loop()
 	}
 	else{
 		// sprintf breaks program somehow
-		noInterrupts();
-
 		if (player == 1){
 			const char  * winmsg [3] = {"Player", "One", "Wins!!"};
 			showmsg(winmsg, 3,  1, TFT_ORANGE);
+			delay(6000);
+
 		}
 		else{
 			const char  * winmsg [3] = {"Player ", "Two", "Wins!!"};
 			showmsg(winmsg, 3,  1, TFT_ORANGE);
+			delay(6000);
+
 		}
 
-		delay(6000);
-
 		/* reset button pressed */
-		if (btnpressed == true){ 
+		if (resetbtn == true){ 
 				resetMotor();
 				steps = 0;
 				noInterrupts();
-				btnpressed = false;
+				resetbtn = false;
 				interrupts();
 				resetFunc();
 		}
-		interrupts();
-
 	}
 }
