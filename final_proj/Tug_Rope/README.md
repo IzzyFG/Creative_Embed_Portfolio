@@ -184,16 +184,21 @@
     1. Place a button in each of the 3 cutout holes in the sides of the
     box.
 6. Wire the motor and buttons.
-    1. Wire the buttons
+    1. Place ESP32 on the 3d Printed TTGO T1 Mount Bottom
+    2. Wire the buttons
         1. Use a wire to connect a ground pin from the ESP32 to the breadboard's
         ground.
         2. Ground each of the button's C to the breadboard's ground.
         3. Following the button pins in the code wire the ESP32 to the NO pin of
         each button.
-    2. Wire the motor.
+    3. Wire the motor.
         1. Motor's power to the 5V output from the ESP32.
         2. Motor's ground to the ESP32 ground.
         3. Follow the motor pins listed in the code.
+7. Mount the ESP32 by clasping the 3d Printed TTGO T1 Mount Bottom to the
+3d Printed TTGO T1 Mount Top
+8. Thread the USB-C cord through the small rectangular hole through the side of
+the box and into the ESP32 and close the box
 
 ## References
 
