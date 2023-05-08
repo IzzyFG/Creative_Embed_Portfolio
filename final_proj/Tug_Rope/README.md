@@ -1,5 +1,17 @@
 # Tug of Rope
 
+## Table of Contents
+
+1. [Software](#software)
+    1. [Software Requirements](#software-requirements)
+    2. [Code Settings](#my-code-settings)
+    3. [Code Settings](#my-code-settings)
+    4. [ESP32 Setup](#esp32-setup)
+2. [Hardware](#hardware)
+    1. [Materials](#materials)
+    2. [Hardware Assembly](#hardware-assembly)
+3. [References](#references)
+
 ## Software
 
 ### Software requirements
@@ -34,7 +46,7 @@
         #include <User_Setups/Setup25_TTGO_T_Display.h>    // Setup file for ESP32 and TTGO T-Display ST7789V SPI bus TFT
         ```
 
-### Setup ESP32
+### ESP32 Setup
 
 1. Clone the repository
 
