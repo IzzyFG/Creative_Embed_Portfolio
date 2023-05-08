@@ -39,18 +39,31 @@
 ### Hardware assembly
 
 1. Making the enclosure
-    1. Laser cut the Basswood with the [full box](..\3d_models\full_box.svg) design
+    1. Laser cut the Basswood with the [full box](..\3d_models\full_box.svg)
+    design
     2. Wood glue the 4 sides together
         1. Player 1 and player 2 side opposite eachother
-        2. Reset side and the side with a small rectangle cut out opposite eachother
+        2. Reset side and the side with a small rectangle cut out opposite
+        eachother
     3. Wood glue the 4 sides to the 8"x8" piece with no holes
-    4. Drill 3 holes through the 8" dowels (with a 7/8" drill bit)
+    4. Drill 3 holes through the 8" dowels (with a 7/64" drill bit)
         1. Drill 1/2" from the top
         2. Drill 1" from the top
         3. Drill 1 1/2" from the top
     5. Place the dowels in the top of the box
         1. With the side of the dowels with holes above the box place them
-         through the holes the box and hot glue in place
+         through the holes in the box and hot glue in place
+    6. Thread the string through the dowels (so it looks like a boxing ring)
+        1. Thread the rope through each dowel's 1 1/2" hole from the top and tie
+         it off
+        2. Thread the rope through each dowel's 1 1/2" hole from the top and tie
+         it off
+        3. Thread the rope through each dowel's 1 1/2" hole from the top and tie
+         it off
+    7. Place the 3d Printed TTGO T1 Mount Top in the rectangular hole in the top
+    of the box
+2. For the wheel gears
+    1. 
 
 ## Code Setup
 
