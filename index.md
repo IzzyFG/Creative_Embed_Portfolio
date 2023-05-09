@@ -29,3 +29,13 @@ create a simple quiz/trivia game that the user can choose from 1 of 4 topics
 for.
 
 ## [Final Project: Tug of Rope](./final_proj)
+
+This project was inspiried by the Rock-em-sock-em kids game. Rock-em-sock-em has
+so many moving pieces, I thought it would be impractical to create a motorized
+version of it. Instead I wanted to build something with the same amount of
+drama it represented. At summer camp we would have a camp wide tournament at the
+end of the summer with one of the main activities being a Tug-Of-War game.
+It was one of my favorite activities and to us it had the same amount of drama
+and tension as a WWE fight, if not more. It meant winning or losing the entire
+summer. Using motors, buttons, and gears to "pull" the string towards a player,
+to win the game.

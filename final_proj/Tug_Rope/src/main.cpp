@@ -174,15 +174,15 @@ void setup()
 	// set btn pins to input w/ internal resistors
 	//plyr1
 	pinMode(btnPins[0], INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(btnPins[0]), playerOne, RISING);
+	attachInterrupt(digitalPinToInterrupt(btnPins[0]), playerOne, HIGH);
 
 	//plyr2
 	pinMode(btnPins[1], INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(btnPins[1]), playerTwo, RISING);
+	attachInterrupt(digitalPinToInterrupt(btnPins[1]), playerTwo, HIGH);
 
 	//resetbutton
 	pinMode(btnPins[2], INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(btnPins[2]), resetBtn, RISING);
+	attachInterrupt(digitalPinToInterrupt(btnPins[2]), resetBtn, HIGH);
 
 
 	showLone("PULL!!", TFT_DARKCYAN);
@@ -200,14 +200,14 @@ bool pull(const char * strp, int plyr, bool won){
 	delay(10);
 	bool direction = plyr>0?true:false;
 
-	moveSteps(direction, 32*16, 3);
-	steps += plyr * 32*16;
+	moveSteps(direction, 32*32, 3);
+	steps += plyr*32*32;
 	const char  * msg [3] = {"Player ", strp, "Pulled"};
 	showmsg(msg, 3,  1, TFT_NAVY);
 	delay(3000);
 	noInterrupts();
 
-	if (abs(steps) == 32*64){
+	if (abs(steps) == 32*32){
 		won = true;
 	}
 	if (won == false){
